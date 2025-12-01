@@ -44,17 +44,17 @@ This project implements three solvers for the simulation of noisy quantum evolut
 
 Formalism: Solves the exact Liouville-von Neumann evolution for the mixed state $\rho$.
 
-Implementation: Represents the state as a dense matrix of dimension $2^N \times 2^N$. Noise channels are applied via the Kraus Operator sum representation: $\rho' = \sum_k K_k \rho K_k^\dagger$.
+Implementation: Represents the state as a dense matrix of dimension $2^{N} \times 2^{N}$. Noise channels are applied via the Kraus Operator sum representation: $\rho' = \sum_{k} K_{k} \rho K_{k}^{\dagger}$.
 
-Numerical Technique: Utilizes a tensor reshaping strategy $(2, 2, \dots, 2)_{bra} \otimes (2, 2, \dots, 2)_{ket}$ to avoid constructing full sparse matrices for local operations.
+Numerical Technique: Utilizes a tensor reshaping strategy $(2, 2, \dots, 2)_{\mathrm{bra}} \otimes (2, 2, \dots, 2)_{\mathrm{ket}}$ to avoid constructing full sparse matrices for local operations.
 
-Computational Complexity: Memory scales as $O(4^N)$. This method provides the exact reference solution but is strictly limited to small systems ($N \lesssim 12$).
+Computational Complexity: Memory scales as $O(4^{N})$. This method provides the exact reference solution but is strictly limited to small systems ($N \lesssim 12$).
 
 2. Tensor Network (TN)
 
 Formalism: Represents the quantum channel $\Lambda$ and state evolution as a contraction of tensors.
 
-Implementation: The noise channel is vectorized into a rank-4 Superoperator Tensor $T_{abcd} = \sum_k (K_k)_{ab} (K_k^*)_{cd}$. The expectation value $\mathcal{E}$ is computed by contracting the network of superoperators along the graph structure.
+Implementation: The noise channel is vectorized into a rank-4 Superoperator Tensor $T_{abcd} = \sum_{k} (K_{k})_{ab} (K_{k}^{\ast})_{cd}$. The expectation value $\mathcal{E}$ is computed by contracting the network of superoperators along the graph structure.
 
 Computational Complexity: Memory scaling is linear $O(N)$ for low-treewidth graphs (e.g., 1D chains), but contraction time scales exponentially with the entanglement entropy (treewidth) of the graph.
 
@@ -62,11 +62,11 @@ Computational Complexity: Memory scaling is linear $O(N)$ for low-treewidth grap
 
 Formalism: Stochastic unravelling of the Lindblad Master Equation.
 
-Implementation: Evolves a single pure state $|\psi\rangle$ of dimension $2^N$. Dissipative processes defined by $\Lambda$ are modeled as stochastic Quantum Jumps determined by Monte Carlo sampling.
+Implementation: Evolves a single pure state $|\psi\rangle$ of dimension $2^{N}$. Dissipative processes defined by $\Lambda$ are modeled as stochastic Quantum Jumps determined by Monte Carlo sampling.
 
-Numerical Technique: Leveraging JAX's vmap, thousands of independent trajectories are executed in parallel on GPU/TPU to estimate the ensemble average: $\rho \approx \frac{1}{M} \sum_{i=1}^M |\psi_i\rangle\langle\psi_i|$.
+Numerical Technique: Leveraging JAX's vmap, thousands of independent trajectories are executed in parallel on GPU/TPU to estimate the ensemble average: $\rho \approx \frac{1}{M} \sum_{i=1}^{M} |\psi_i\rangle\langle\psi_i|$.
 
-Computational Complexity: Memory scales as $O(2^N)$. This allows for the simulation of significantly larger systems ($N \approx 20-30$) compared to the DM approach, subject to statistical sampling error $\propto 1/\sqrt{M}$.
+Computational Complexity: Memory scales as $O(2^{N})$. This allows for the simulation of significantly larger systems ($N \approx 20-30$) compared to the DM approach, subject to statistical sampling error $\propto 1/\sqrt{M}$.
 
 Installation
 
