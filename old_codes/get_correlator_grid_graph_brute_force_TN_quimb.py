@@ -228,9 +228,8 @@ title_string = title_string + " | # = " + str(len(data_Q_ent_max)) + " | Optimal
 title_string = title_string + string_optimal_directions
 
 
-ax.set_title(title_string, fontsize=12) # Reduced fontsize for complex title
+ax.set_title(title_string, fontsize=12) 
 nx.draw(graph,   with_labels=True, node_color='lightblue', ax=ax)
 plt.show()
-# Save the figure
 # plt.savefig("./figure_final.png", dpi=600, format="png")
 # print("Final graph visualization saved to ./figure_final.png")
