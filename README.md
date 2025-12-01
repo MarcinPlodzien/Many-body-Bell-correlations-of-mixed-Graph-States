@@ -1,14 +1,14 @@
-Many-body Bell correlations in mixed Graph States
+Benchmarking Bell Correlations in Mixed Graph States
 
 A JAX-based computational framework for simulating Variational Quantum Algorithms (VQA) in open quantum systems.
 
-Overview
+Scientific Overview
 
 This repository implements a high-performance numerical framework to study many-body Bell correlations (specifically the $Q$ correlator) in quantum Graph States subject to realistic environmental noise.
 
 The core physical problem addresses the robustness of multipartite entanglement in mixed states. We consider a graph state $\rho_G$ subjected to a quantum noise channel $\Lambda$. The objective is to maximize the expectation value $\mathcal{E}$ of a many-body Bell correlator. The optimization problem is defined as:
 
-$$\mathcal{E} = \max_{\vec{\theta}} \left| \text{Tr}[\Lambda(\rho_G) \cdot \mathcal{B}(\vec{\theta})] \right|^2$$
+$$\mathcal{E} = \max_{\vec{\theta}} \left| \mathrm{Tr}[\Lambda(\rho_G) \cdot \mathcal{B}(\vec{\theta})] \right|^2$$
 
 $$Q = \log_2(\mathcal{E}) + N$$
 
@@ -16,17 +16,17 @@ Where:
 
 $\Lambda(\cdot)$ is the quantum noise channel (e.g., Amplitude Damping, Depolarizing) represented by Kraus operators $\{K_i\}$ such that $\Lambda(\rho) = \sum_i K_i \rho K_i^\dagger$.
 
-$\mathcal{B}(\vec{\theta})$ is the Variational Bell Operator, constructed as the tensor product of local $\sigma_+$ operators rotated into an optimal measurement basis:
+$\mathcal{B}(\vec{\theta})$ is the Variational Bell Operator, constructed as the tensor product of local $\sigma_{+}$ operators rotated into an optimal measurement basis:
 
-$$\mathcal{B}(\vec{\theta}) = \bigotimes_{j=1}^N U_j(\theta_j) \sigma_+ U_j^\dagger(\theta_j)$$
+$$\mathcal{B}(\vec{\theta}) = \bigotimes_{j=1}^N U_j(\theta_j) \sigma_{+} U_j^\dagger(\theta_j)$$
 
-Here, $\sigma_+$ represents the local raising operator (e.g., $|0\rangle\langle 1|$ in the computational basis), and $U_j(\theta_j)$ is a parameterized local unitary rotation acting on qubit $j$.
+Here, $\sigma_{+}$ represents the local raising operator (e.g., $|0\rangle\langle 1|$ in the computational basis), and $U_j(\theta_j)$ is a parameterized local unitary rotation acting on qubit $j$.
 
 To solve this optimization problem efficiently across different system sizes $N$, this framework implements and benchmarks three distinct numerical methods.
 
 Related Research
 
-The Bell correlator $Q$ maximized in this project and the variational protocols employed are directly related to the methods and definitions established in the following papers:
+The Bell correlator $Q$ maximized in this project and the variational protocols employed are derived directly from the theoretical framework and definitions established in the following papers:
 
 Entanglement in graph states and its detection
 Reports on Progress in Physics (2024)
@@ -86,11 +86,11 @@ Simulation & Usage
 
 The workflow is divided into simulation (generating data) and analysis (visualization).
 
-1. Simulation (bell_correlations.py)
+1. Simulation (bell_correlation_simulation.py)
 
 This script executes the variational optimization loop. It sweeps over the noise parameter $p$ in channel $\Lambda$, optimizes the measurement angles $\vec{\theta}$ using the Adam optimizer, and computes the expectation value $\mathcal{E}$ and Bell correlation $Q$.
 
-python 01_get_bell_correlations.py
+python bell_correlation_simulation.py
 
 
 Configuration:
@@ -105,11 +105,11 @@ noise_type_vec: List of quantum channels to investigate (e.g., amplitude_damping
 Output:
 Data is serialized into Pandas DataFrames and saved as .pkl files in the results/ directory, containing optimal angles, metrics ($\mathcal{E}, Q$), and topology data.
 
-2. Visualization (02_plot_results.py)
+2. Visualization (plot_results.py)
 
 This script generates publication-quality figures comparing the results of the different solvers and noise models.
 
-python 02_plot_results.py
+python plot_results.py
 
 
 It creates two types of plots:
@@ -143,6 +143,7 @@ Turán Graph: Multipartite graphs $T(N, r)$.
 1D Chain & Cycle: Linear cluster states.
 
 Complete Graph: All-to-all connectivity.
+
 
 License
 
