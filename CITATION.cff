@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+authors:
+  - family-names: "Płodzień"
+    given-names: "Marcin"
+    orcid: "https://orcid.org/0000-0002-0835-1644"
+title: "Many-body Bell correlations in mixed Graph States"
+version: 1.0.0
+date-released: 2025-12-01
+url: "https://github.com/MarcinPlodzien/Many-body-Bell-correlations-in-mixed-Graph-States"
+license: MIT
+keywords:
+  - quantum-computing
+  - graph-states
+  - bell-correlations
+  - jax
+  - variational-quantum-algorithms
+references:
+  - type: article
+    title: "Many-body quantum resources of graph states"
+    authors:
+      - family-names: "Płodzień"
+        given-names: "Marcin"
+      - family-names: "Lewenstein"
+        given-names: "Maciej"
+      - family-names: "Chwedeńczuk"
+        given-names: "Jan"  
+    journal: "Reports on Progress in Physics"
+    year: 2024
+    doi: "10.1088/1361-6633/adecc0"
+    url: "https://iopscience.iop.org/article/10.1088/1361-6633/adecc0"
+  - type: article
+    title: "Entanglement classification and non-𝑘-separability certification via Greenberger-Horne-Zeilinger-class fidelity"
+    authors:
+      - family-names: "Płodzień"
+        given-names: "Marcin"
+      - family-names: "Chwedeńczuk"
+        given-names: "Jan"
+      - family-names: "Lewenstein"
+        given-names: "Maciej"
+      - family-names: "Rajchel-Mieldzioć"
+        given-names: "Grzegorz"  
+    journal: "Physical Review A"
+    volume: 110
+    issue: 3
+    start: "032428"
+    year: 2024
+    doi: "10.1103/PhysRevA.110.032428"
+    url: "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.110.032428"
