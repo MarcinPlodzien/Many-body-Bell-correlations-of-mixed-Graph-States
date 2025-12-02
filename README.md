@@ -21,7 +21,7 @@ Where:
 * $\mathcal{B}(\vec{\theta})$ is the **Variational Bell Operator**, constructed as the tensor product of local $\sigma_{+}$ operators rotated into an optimal measurement basis:
 
 $$
-\mathcal{B}(\vec{\theta}) = \bigotimes_{j=1}^N U_j(\theta_j) \sigma_{+} U_j^\dagger(\theta_j)
+\mathcal{B}(\vec{\theta}) = \bigotimes_{j=1}^N U_j(\theta_j) \sigma^{+}_j U_j^\dagger(\theta_j)
 $$
 
 Here, $\sigma_{+}$ represents the local raising operator (e.g., $|0\rangle\langle 1|$ in the computational basis), and $U_j(\theta_j)$ is a parameterized local unitary rotation acting on qubit $j$.
